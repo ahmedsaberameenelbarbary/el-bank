@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER UPDATE </title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="GO!" action="interface"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="DELET PERSON" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="15"  color="blue" />
+
+            <h:panelGroup >
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="DATE:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{c.curdate}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:inputText>
+                    <h:outputLabel value="TIME:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{c.time}" id="time" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+
+                        <f:convertDateTime pattern="h:m:s"/>
+                        
+                    </h:inputText>
+                  
+                </h:panelGrid></h:panelGroup> 
+            <HR align="center" size="1"  color="blue" />
+              <i> <center><h:panelGrid columns="2">
+                    <h:outputLabel value="ENTER USER ID Number:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{u.id}" id="i" style="border-color: blue;color:red ; font-size: larger;"> 
+                        <f:ajax event="keyup" render="name  idd "  listener="#{u.getcus()}"/>
+                    </h:inputText>
+                   
+            </h:panelGrid></center></i>
+            <HR align="center" size="1"  color="blue" />                   
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="USER ID" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{u.id}" id="name" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="USER NAME" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{u.name}" id="idd" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                   
+                </h:panelGrid>  
+
+
+          
+
+          
+            <i>   <center> <h:outputText value="#{u.msg}" id="msg" style="border-color: blue;background: white;color:blue ; font-size: x-large;border-radius:5"/></center></i> 
+            <HR align="center" size="3"  color="blue" />
+            <i> <center><h:panelGrid columns="4" >                          
+                        <h:commandButton value="DELETE customer" action="#{u.delete()}"  style=" color: yellow; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>
+                <h:commandButton value="refres" action="#{u.clearall()}"  style=" color: yellow; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>
+            </h:panelGrid></center></i>
+        </h:form>
+
+    </h:body>
+</html>
+

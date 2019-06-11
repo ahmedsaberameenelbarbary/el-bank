@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER UPDATE </title>
+    </h:head>
+    <h:body>
+        <h:form >
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="ALL personal Details OF Customer" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="8"  color="blue" />
+
+            <h:panelGroup >
+                <h:panelGrid columns="10">
+                    <h:commandButton value="GO!" action="interface"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>  
+                    <h:outputLabel value="DATE:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{c.curdate}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:inputText>
+                    <h:outputLabel value="TIME:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{c.time}" id="time" style="border-color: blue;background:white;color:red ; font-size: larger;border-radius:5">
+
+                        <f:convertDateTime pattern="h:m:s"/>
+                        
+                    </h:inputText>
+                     <h:selectOneMenu value="#{c.vis}" onchange="submit()" style="border-color: blue;background:blue;color:red ; font-size: larger;border-radius:5">
+                <f:selectItem itemLabel="GTE allcostomers" noSelectionOption="true"/>
+                <f:selectItem itemLabel="SHOW DATA" itemValue="visible"/>
+                <f:selectItem itemLabel="HIDDEN DATA" itemValue="hidden"/> 
+            </h:selectOneMenu>
+                  <h:inputText value="#{c.cus_account_num}" onchange="submit()" id="i" style="border-color: blue;color:red ; font-size: large;"> 
+                      <f:ajax event="keyup" render="one"  />
+                    </h:inputText>
+                    
+                    <h:selectOneMenu value="#{c.vis1}" onchange="submit()" style="border-color: blue;background:blue;color:red ; font-size: larger;border-radius:5">
+                <f:selectItem itemLabel="GTEonecustomer" noSelectionOption="true"/>
+                <f:selectItem itemLabel="SHOW DATA" itemValue="visible"/>
+                <f:selectItem itemLabel="HIDDEN DATA" itemValue="hidden"/> 
+            </h:selectOneMenu>
+                     <h:outputLabel value="the count of costomers IS:" style="color:blue ; font-size: large "/> 
+                    <h:outputLabel value="#{c.count}" style="color:red ; font-size: xx-large "/> 
+                </h:panelGrid></h:panelGroup> 
+            <HR align="center" size="1"  color="blue" />
+            <h:dataTable value="#{c.c}" id="all" var="a" border="1" width="100%" style="visibility:#{c.vis};border-color: red;background: blue;color:white ; font-size: small "  >
+               <h:column >
+                    <f:facet name="header">CUSTOMER ACCOUNT</f:facet>
+                    <h:outputText value="#{a.cus_account_num}" id="ac"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER NAME</f:facet>
+                    #{a.cus_name}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">CUSTOMER BALANCE</f:facet>
+                    <h:outputText value="#{a.cus_balance}" id="B"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER PHONE</f:facet>
+                    #{a.cus_phone}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">CUSTOMER OCCUPATION</f:facet>
+                    <h:outputText value="#{a.cus_occupation}" id="O"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER NATIONAL ID</f:facet>
+                    #{a.cus_national_id_num}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">CUSTOMER ADDRESS</f:facet>
+                    <h:outputText value="#{a.cus_address}" id="aD"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER ANNUAL INCOME</f:facet>
+                    #{a.cus_annual_income}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">CUSTOMER MARITAL STATE</f:facet>
+                    <h:outputText value="#{a.cus_marital_state}" id="aMA"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER SEX</f:facet>
+                    #{a.cus_sex}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">CUSTOMER NOMINEE</f:facet>
+                    <h:outputText value="#{a.cus_nominee}" id="aNO"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> DATE</f:facet>
+                    <h:inputText value="#{a.curdate}"  style="background: blue;color:white ; font-size: small ; width: 80%">
+                        <f:convertDateTime pattern="dd-mm-yyyy"/>
+                    </h:inputText>
+                </h:column>
+                <h:column >
+                    <f:facet name="header">TIME</f:facet>
+                    <h:inputText value="#{a.time}"  style="background: blue;color:white ; font-size: small ; width: 80%" >
+                        <f:convertDateTime pattern="h:m:s"/>
+                    </h:inputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER BIRTH DATE</f:facet>
+                    <h:inputText  value="#{a.birthdate}" style="background: blue;color:white ; font-size: small ; width: 60%" >
+                        <f:convertDateTime pattern="dd-mm-yyyy" />
+                    </h:inputText>
+                </h:column>
+                
+            </h:dataTable>
+            <!--///////////////////////////**************/////////////////888888888888888//////////////////////////-->
+            
+            <h:dataTable value="#{c.a}" id="one" var="a" border="1" width="100%" style="visibility:#{c.vis1};border-color: red;background: green;color:white ; font-size: small "  >
+               <h:column >
+                    <f:facet name="header">CUSTOMER ACCOUNT</f:facet>
+                    <h:outputText value="#{a.cus_account_num}" id="ac"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER NAME</f:facet>
+                    #{a.cus_name}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">CUSTOMER BALANCE</f:facet>
+                    <h:outputText value="#{a.cus_balance}" id="B"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER PHONE</f:facet>
+                    #{a.cus_phone}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">CUSTOMER OCCUPATION</f:facet>
+                    <h:outputText value="#{a.cus_occupation}" id="O"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER NATIONAL ID</f:facet>
+                    #{a.cus_national_id_num}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">CUSTOMER ADDRESS</f:facet>
+                    <h:outputText value="#{a.cus_address}" id="aD"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER ANNUAL INCOME</f:facet>
+                    #{a.cus_annual_income}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">CUSTOMER MARITAL STATE</f:facet>
+                    <h:outputText value="#{a.cus_marital_state}" id="aMA"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER SEX</f:facet>
+                    #{a.cus_sex}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">CUSTOMER NOMINEE</f:facet>
+                    <h:outputText value="#{a.cus_nominee}" id="aNO"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> DATE</f:facet>
+                    <h:inputText value="#{a.curdate}"  style="background: blue;color:white ; font-size: small ; width: 80%">
+                        <f:convertDateTime pattern="dd-mm-yyyy"/>
+                    </h:inputText>
+                </h:column>
+                <h:column >
+                    <f:facet name="header">TIME</f:facet>
+                    <h:inputText value="#{a.time}"  style="background: blue;color:white ; font-size: small ; width: 80%" >
+                        <f:convertDateTime pattern="h:m:s"/>
+                    </h:inputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER BIRTH DATE</f:facet>
+                    <h:inputText  value="#{a.birthdate}" style="background: blue;color:white ; font-size: small ; width: 60%" >
+                        <f:convertDateTime pattern="dd-mm-yyyy" />
+                    </h:inputText>
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+

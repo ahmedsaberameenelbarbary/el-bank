@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>DEPOSIT WINDOW </title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="GO!" action="interface"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="Deposit Window" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="15"  color="blue" />
+
+            <h:panelGroup >
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="DATE:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{t.tran_date}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:inputText>
+
+
+                </h:panelGrid></h:panelGroup> 
+            <HR align="center" size="1"  color="blue" />
+            <i> <center><h:panelGrid columns="4">
+                        <h:outputLabel value="Enter Customer's Account Number:" style="color:blue ; font-size: large "/> 
+                        <h:inputText value="#{t.cus_acco}" id="i" style="border-color: blue;color:red ; font-size: xx-large;"> 
+                            <f:ajax event="keyup" render="name phone num occup NAID pl"  listener="#{t.getcus()}"/>
+                        </h:inputText>
+                        <h:commandButton value="check avaliability!" action="#{t.checkaccount()}" style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/> 
+                        <h:outputText value="#{t.checkmsg}" id="checkmsg" style="border-color: blue;background: green;color:red ; font-size: xx-large;border-radius:5"/>
+                    </h:panelGrid></center></i>
+            <HR align="center" size="1"  color="blue" />
+<h:panelGrid columns="2">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Account Number:" style="color:blue ; font-size:xx-large "/> 
+                <h:inputText value="#{t.cus_acco}" id="num" style="border-color: blue;background: white;color:red ; font-size: xx-large;border-radius:5"/>
+                <h:outputLabel value="Customer Name:" style="color:blue ; font-size: xx-large "/> 
+                <h:inputText value="#{t.cus_name}" id="name" style="border-color: blue;background: white;color:red ; font-size: xx-large;border-radius:5"/>
+                <h:outputLabel value="Previous Balance :" style="color:blue ; font-size: xx-large "/> 
+                <h:inputText value="#{t.tran_oldbalance}" id="phone" style="border-color: blue;background: white;color:red ; font-size: xx-large;border-radius:5"/>
+                <h:outputLabel value="Transaction Mode:" style="color:blue ; font-size: xx-large "/>
+
+                <h:selectOneMenu value="#{c.vis}" onchange="submit()" style="border-color: blue;background:blue;color:red ; font-size: larger;border-radius:5">
+                    <f:selectItem itemLabel="Cash" itemValue="Cash"/>
+                    <f:selectItem itemLabel="notcash" itemValue="NotCash"/> 
+                </h:selectOneMenu>
+
+                <h:outputLabel value="Deposite Amount" style="color:blue ; font-size: xx-large "/> 
+                <h:inputText value="#{t.tran_amount}" id="NAID" style="border-color: blue;background: white;color:red ; font-size: xx-large;border-radius:5"/>
+                <h:outputLabel value="Deposite Place" style="color:blue ; font-size: xx-large "/> 
+                <h:inputText value="#{t.tran_place}" id="pl" style="border-color: blue;background: white;color:red ; font-size: xx-large;border-radius:5"/>
+            </h:panelGrid> 
+     <h:panelGrid columns="1">
+            <center>
+               <h:selectOneMenu value="#{user.vis}" onchange="submit()" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large;">
+                <f:selectItem itemLabel="CALCULATOR" noSelectionOption="true"/>
+                <f:selectItem itemValue="visible"/>
+                <f:selectItem itemValue="hidden"/> 
+            </h:selectOneMenu>
+
+                <h:panelGrid columns="1" border="2" style=" visibility:#{user.vis};color: blue;border-color:blue;background-color: white;text-align: center;font-size:large">
+                    <h:outputText value="#{user.name}" id="n" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large"/>
+                    <h:panelGrid columns="3">
+                        <h:commandButton  value="off" action="#{user.setoff()}" style=" color: red;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        <h:commandButton value="+/-" action="#{user.setsign()}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        <h:commandButton  value="clear" action="#{user.clear()}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 105px"/>
+
+                    </h:panelGrid>
+                    <h:panelGrid columns="4">
+                        <h:commandButton id="a7" value="7" action="#{user.add(7)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        <h:commandButton id="a8" value="8" action="#{user.add(8)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        <h:commandButton id="a9" value="9" action="#{user.add(9)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        <h:commandButton id="add" value="+" action="#{user.setop('+')}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="4">
+                        <h:commandButton id="a4" value="4" action="#{user.add(4)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px" />
+                        <h:commandButton id="a5" value="5" action="#{user.add(5)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        <h:commandButton id="a6" value="6" action="#{user.add(6)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+
+                        <h:commandButton id="sub1" value="-" action="#{user.setop('-')}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="4">
+                        <h:commandButton id="a1" value="1" action="#{user.add(1)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        <h:commandButton id="a2" value="2" action="#{user.add(2)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        <h:commandButton id="a3" value="3" action="#{user.add(3)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+
+                        <h:commandButton id="multi" value="X" action="#{user.setop('*')}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="4">
+                        <h:commandButton id="aequl" value="=" action="#{user.setequal()}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px" />
+                        <h:commandButton id="a0"  value="0" action="#{user.add(0)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        <h:commandButton id="sub" value="." action="#{user.adddot()}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        <h:commandButton  value="÷" action="#{user.setop('/')}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                    </h:panelGrid>
+                </h:panelGrid>                  
+
+            </center>
+                </h:panelGrid>
+    </h:panelGrid> 
+            <h:panelGrid columns="2">
+                <h:commandButton value="save" action="#{t.save()}" style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>            
+                <h:commandButton value="refres" action="#{t.clearall()}"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>                
+            </h:panelGrid>
+            <i>   <center> <h:outputText value="#{t.msg}" id="msg" style="border-color: blue;background: white;color:blue ; font-size: xx-large;border-radius:5"/></center></i> 
+            <HR align="center" size="15"  color="blue" />
+
+
+
+
+
+
+
+
+
+
+        </h:form>
+
+    </h:body>
+</html>
+

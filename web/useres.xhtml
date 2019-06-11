@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER </title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="GO!" action="interface"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="CREATE USER" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+           <HR align="center" size="15"  color="blue" />
+
+            
+                <h:panelGrid columns="2">
+                     <h:panelGrid columns="2">
+                    <h:outputLabel value="DATE:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{c.curdate}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:inputText>
+                    <h:outputLabel value="TIME:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{c.time}" id="time" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+
+                        <f:convertDateTime pattern="h:m:s"/>
+                    </h:inputText>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2">
+                    <h:commandButton value="check account if found!" action="#{u.checkaccount()}" style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+                      <h:outputText value="#{u.checkmsg}" id="checkmsg" style="border-color: blue;background: green;color:red ; font-size: x-large;border-radius:5"/>
+               </h:panelGrid></h:panelGrid>                   
+                    <HR align="center" size="1"  color="blue" />
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="AUTO Number:" style="color:blue ; font-size: xx-large "/> 
+                        <h:outputLabel value="#{u.autonum}" style="color:red ; font-size: xx-large "/> 
+                    </h:panelGrid>
+            <h:panelGrid columns="4">           
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="BANK NAME" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{u.bankplace}" id="NAID" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="USER NAME" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{u.name}" id="INCOME" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>        
+                     <h:outputLabel value="PASS WORD" style="color:blue ; font-size: xx-large "/> 
+                     <h:inputText value="#{u.pass}" id="pass" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="CONFIRM PASSWORD" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{u.confirm_name}" id="con" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>     
+                </h:panelGrid>  
+            </h:panelGrid>
+            <BR/><HR align="center" size="1"  color="blue" />
+            
+           
+             <h:panelGrid columns="2">
+             <h:commandButton value="save" action="#{u.save()}" style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>            
+             <h:commandButton value="refres" action="#{u.clearall()}"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>                
+                 </h:panelGrid>
+             <i>   <center> <h:outputText value="#{u.msg}" id="msg" style="border-color: blue;background: white;color:blue ; font-size: xx-large;border-radius:5"/></center></i> 
+            <HR align="center" size="15"  color="blue" />
+            
+        </h:form>
+        
+    </h:body>
+</html>
+

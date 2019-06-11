@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>ALL CUSTOMER TRANSACATION </title>
+    </h:head>
+    <h:body>
+        <h:form >
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="ALL CUSTOMER TRANSACATION" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="8"  color="blue" />
+<h:commandButton value="GO!" action="interface"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+            <h:panelGroup >
+                <h:panelGrid columns="8">
+                    <h:outputLabel value="DATE:" style="color:blue ; font-size: large "/> 
+                    <h:outputLabel value="#{c.curdate}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:outputLabel>
+                    <h:outputLabel value="TIME:" style="color:blue ; font-size: large "/> 
+                    <h:outputLabel value="#{c.time}" id="time" style="border-color: blue;background:white;color:red ; font-size: larger;border-radius:5">
+
+                        <f:convertDateTime pattern="h:m:s"/>
+
+                    </h:outputLabel>
+                    <h:outputLabel value="Enter the customer account number:" style="color:blue ; font-size: large; font-style: italic  "/> 
+                    <h:inputText value="#{t.cus_acco}" onchange="submit()" id="i" style="border-color: blue;color:red ; font-size: large;"> 
+                        <f:ajax event="keyup" render="one cou"  />
+                    </h:inputText>
+
+                    <h:outputLabel value="the count of Transaction IS:" style="color:blue ; font-size: large "/> 
+                    <h:outputLabel value="#{t.count}"  id="cou" style="color:red ; font-size: xx-large "/> 
+                </h:panelGrid></h:panelGroup> 
+            <HR align="center" size="1"  color="blue" />
+
+            <!--///////////////////////////**************/////////////////888888888888888//////////////////////////-->
+
+            <h:dataTable value="#{t.table}" id="one" var="a" border="1" width="100%" style="visibility:#{c.vis1};border-color: red;background: green;color:white ; font-size: small "  >
+                <h:column >
+                    <f:facet name="header">CUSTOMER ACCOUNT</f:facet>
+                    <h:outputText value="#{a.cus_acco}" id="ac"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CUSTOMER NAME</f:facet>
+                        #{a.cus_name}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">FINAL BALANCE</f:facet>
+                    <h:outputText value="#{a.tran_finalbalance}" id="B"/>
+                </h:column>               
+                <h:column >
+                    <f:facet name="header">PREVIOUS BALANCE</f:facet>
+                    <h:outputText value="#{a.tran_oldbalance}" id="O"/>
+                </h:column>
+                <h:column >
+                    <f:facet name="header">TANSACTION AMOUNT</f:facet>
+                    <h:outputText value="#{a.tran_amount}" id="aMA"/>
+                </h:column>
+                <h:column >
+                    <f:facet name="header">TRANSACTION TYPE</f:facet>
+                    <h:outputText value="#{a.tran_type}" id="aD"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">TRANSACTION PLACE</f:facet>
+                        #{a.tran_place}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">TANSACTION DATE</f:facet>
+                    <h:outputText value="#{a.tran_date}" id="a"/>
+                </h:column>
+               
+
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+

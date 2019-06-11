@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER </title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="GO!" action="interface"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="personal Details OF Customer" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+           <HR align="center" size="15"  color="blue" />
+
+            
+                <h:panelGrid columns="2">
+                     <h:panelGrid columns="2">
+                    <h:outputLabel value="DATE:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{c.curdate}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:inputText>
+                    <h:outputLabel value="TIME:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{c.time}" id="time" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+
+                        <f:convertDateTime pattern="h:m:s"/>
+                    </h:inputText>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2">
+                    <h:commandButton value="check account if found!" action="#{c.checkaccount()}" style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+                      <h:outputText value="#{c.checkmsg}" id="checkmsg" style="border-color: blue;background: green;color:red ; font-size: x-large;border-radius:5"/>
+               </h:panelGrid></h:panelGrid>
+                   
+                    <HR align="center" size="1"  color="blue" />
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="AUTO Number:" style="color:blue ; font-size: xx-large "/> 
+                        <h:outputLabel value="#{c.autonum}" style="color:red ; font-size: xx-large "/> 
+                    </h:panelGrid>
+            <h:panelGrid columns="2">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Account Number:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{c.cus_account_num}" id="account_num" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="Customer Name:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{c.cus_name}" id="name" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="PHONE:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{c.cus_phone}" id="phone" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="OCCUPATION:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{c.cus_occupation}" id="occup" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                </h:panelGrid> 
+
+
+
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="NATIONAL ID" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{c.cus_national_id_num}" id="NAID" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="ANNUAL INCOME" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{c.cus_annual_income}" id="INCOME" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="ADDRESS" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{c.cus_address}" id="ADD" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="NOMINEE" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{c.cus_nominee}" id="NOMINEE" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                </h:panelGrid>  
+
+
+            </h:panelGrid>
+            <BR/><HR align="center" size="1"  color="blue" />
+            <h:panelGrid columns="2">
+                <h:outputLabel value="CURRENT BALANCE" style="color:mediumvioletred ; font-size: xx-large "/> 
+                <h:inputText value="#{c.cus_balance}" id="BALANCE" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>  
+            </h:panelGrid>
+            <HR align="center" size="1"  color="blue" />
+            <h:outputLabel value="SEX" style="background: white;color:blue ; font-size: large "/>
+            <h:selectOneRadio value="#{c.cus_sex}">
+                <f:selectItem itemLabel="MALE"  itemValue="MALE" />
+                 <f:selectItem itemLabel="FEMALE"  itemValue="FEMALE"/>
+            </h:selectOneRadio>
+             <h:outputLabel value="MARITAL STATUS" style="background: white;color:blue ; font-size: large "/>
+             <h:selectOneRadio value="#{c.cus_marital_state}">
+                <f:selectItem itemLabel="Married"  itemValue="MARRIED"/>
+                 <f:selectItem itemLabel="UN Married"  itemValue="UN MARRIED"/>
+            </h:selectOneRadio>
+             <HR align="center" size="1"  color="blue" />
+             <h:outputLabel value="Birth DATE" style="background: white;color:blue ; font-size: large "/>
+             <h:selectOneMenu value="#{c.d}">
+                  <f:selectItem itemLabel="DAY" noSelectionOption="true"/>
+                 <f:selectItems value="#{c.day}"/>
+             </h:selectOneMenu>
+             <h:selectOneMenu value="#{c.m}">
+                  <f:selectItem itemLabel="MONTH" noSelectionOption="true"/>
+                 <f:selectItems value="#{c.month}"/>
+             </h:selectOneMenu>
+             <h:selectOneMenu value="#{c.y}">
+                  <f:selectItem itemLabel="YEAR" noSelectionOption="true"/>
+                  <f:selectItems value="#{c.year}"/>
+             </h:selectOneMenu>
+             <HR align="center" size="1"  color="blue" />
+           
+             <h:panelGrid columns="2">
+             <h:commandButton value="save" action="#{c.save()}" style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>            
+             <h:commandButton value="refres" action="#{c.clearall()}"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>                
+                 </h:panelGrid>
+             <i>   <center> <h:outputText value="#{c.msg}" id="msg" style="border-color: blue;background: white;color:blue ; font-size: xx-large;border-radius:5"/></center></i> 
+            <HR align="center" size="15"  color="blue" />
+            
+        </h:form>
+        
+    </h:body>
+</html>
+

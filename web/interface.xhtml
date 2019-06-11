@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+
+        <h:outputStylesheet library="css" name="csd.css"/>
+    </h:head>
+    <h:body>
+        <h:form >
+            <h:panelGrid columns="1">
+            <h:panelGrid columns="3">
+            <h:panelGrid columns="1">
+                <h:selectOneMenu  value="#{u.opentran}" onchange="submit()" style="border-color: blue;background:blue;color:red ; font-size: larger;border-radius:5">
+                    <f:selectItem itemLabel="Transaction" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="deposite" itemValue="deposite"/>
+                    <f:selectItem itemLabel="with draw" itemValue="with draw" /> 
+                    <f:selectItem itemLabel="transfer" itemValue="transfer"/> 
+                    <f:selectItem itemLabel="alltransaction" itemValue="alltransaction"/> 
+                </h:selectOneMenu>
+                <h:commandButton value="GO!" action="#{u.opentran()}"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+            </h:panelGrid>
+
+            <h:panelGrid columns="1">
+                <h:selectOneMenu value="#{u.opencus}" onchange="submit()" style="border-color: blue;background:blue;color:red ; font-size: larger;border-radius:5">
+                    <f:selectItem itemLabel="Customer" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="customer" itemValue="customer"/>
+                    <f:selectItem itemLabel="customer_up" itemValue="customer_up"/>               
+                    <f:selectItem itemLabel="allcustomer" itemValue="allcustomeer"/> 
+                </h:selectOneMenu>
+                <h:commandButton value="GO!" action="#{u.opencus()}"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+            </h:panelGrid>
+
+            <h:panelGrid columns="1">
+                <h:selectOneMenu value="#{u.openuser}" onchange="submit()" style="border-color: blue;background:blue;color:red ; font-size: larger;border-radius:5">
+                    <f:selectItem itemLabel="useres" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="useres" itemValue="useres"/>
+                    <f:selectItem itemLabel="userdelete" itemValue="userdelete"/>               
+                </h:selectOneMenu>
+                <h:commandButton value="GO!" action="#{u.openuser()}"  style=" color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+            </h:panelGrid>
+                </h:panelGrid>
+
+            <h:graphicImage url="img/1.jpg" width="1400" height="670" />
+             </h:panelGrid>
+        </h:form>
+
+    </h:body>
+</html>
+
